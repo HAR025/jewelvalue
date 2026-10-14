@@ -373,8 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="product-tag">${product.karatLabel}</span>
             </div>
 
-            <div class="product-meta-row">
-              <span style="font-size: 13px; font-weight: 700; color: var(--gold-primary); font-family: ui-monospace, monospace;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--gold-400); font-family: ui-monospace, monospace;">
                 ${product.weightGrams}g Gold
               </span>
               <span style="font-size: 12px; color: #94A3B8;">
@@ -382,31 +382,31 @@ document.addEventListener('DOMContentLoaded', () => {
               </span>
             </div>
 
-            <h3 class="product-title">${product.name}</h3>
-            <p class="product-desc">${product.description}</p>
+            <h3 class="font-serif-luxury" style="font-size: 17px; font-weight: 700; color: #FFF; margin-bottom: 6px; line-height: 1.35;">${product.name}</h3>
+            <p style="font-size: 12.5px; color: var(--text-tertiary); line-height: 1.45; margin-bottom: 16px;">${product.description}</p>
           </div>
 
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
+          <div style="padding-top: 14px; border-top: 1px solid var(--border-subtle);">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px;">
               <div>
-                <div style="font-size: 11px; color: #64748B; text-transform: uppercase;">Live Price (incl. 3% GST)</div>
-                <div style="font-size: 19px; font-weight: 800; font-family: ui-monospace, monospace; color: var(--gold-primary);">
+                <div style="font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; font-weight: 600;">Live Rate (incl. 3% GST)</div>
+                <div style="font-size: 21px; font-weight: 800; font-family: var(--font-sans); color: var(--gold-400); letter-spacing: -0.02em;">
                   ${formatMoney(totalINR)}
                 </div>
               </div>
               <div style="text-align: right;">
-                <div style="font-size: 11px; color: #64748B; text-transform: uppercase;">Vault Gold</div>
-                <div style="font-size: 13px; font-weight: 700; color: #34D399; font-family: ui-monospace, monospace;">
+                <div style="font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; font-weight: 600;">Vault Gold</div>
+                <div style="font-size: 13.5px; font-weight: 700; color: var(--emerald); font-family: ui-monospace, monospace;">
                   ${gramsRequired}g
                 </div>
               </div>
             </div>
 
-            <div class="product-action-bar">
-              <button class="btn btn-liquid-glass add-to-bag-btn" data-id="${product.id}">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <button class="btn btn-liquid-glass add-to-bag-btn" data-id="${product.id}" style="font-size: 12.5px; padding: 10px 14px;">
                 Add to Bag
               </button>
-              <button class="btn btn-liquid-gold pay-gold-btn" data-id="${product.id}" data-grams="${gramsRequired}">
+              <button class="btn btn-liquid-gold pay-gold-btn" data-id="${product.id}" data-grams="${gramsRequired}" style="font-size: 12.5px; padding: 10px 14px;">
                 Pay with Gold
               </button>
             </div>

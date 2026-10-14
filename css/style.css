@@ -1,48 +1,35 @@
 /* ==========================================================================
-   JewelValue — World-Class Apple Liquid Glass Design System
-   Crafted for Quiet Luxury, Flawless Hierarchy & Tactile Elegance
+   JewelValue — Luxury Apple Water UI / Haute Joaillerie Design System
+   Human-crafted, bespoke luxury aesthetic
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
-
 :root {
-  /* Color Palette */
-  --canvas: #050608;
-  --surface-glass: rgba(18, 22, 34, 0.6);
-  --surface-glass-card: rgba(22, 27, 40, 0.55);
-  --surface-glass-hover: rgba(30, 36, 54, 0.7);
-  --surface-glass-active: rgba(255, 255, 255, 0.1);
+  --bg-deep: #080A0F;
+  --bg-surface: rgba(16, 20, 29, 0.68);
+  --bg-surface-elevated: rgba(22, 28, 42, 0.78);
+  --bg-glass-input: rgba(10, 13, 20, 0.6);
 
-  /* Borders & Specular Highlights */
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-border-subtle: rgba(255, 255, 255, 0.06);
-  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5);
-  --glass-specular-gold: inset 0 1px 1px 0 rgba(245, 208, 97, 0.6), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 255, 255, 0.16);
+  --border-gold: rgba(212, 175, 55, 0.35);
 
-  /* Gold Tones */
-  --gold-glow: #F3CE5A;
-  --gold-light: #FFF2C6;
-  --gold-gradient: linear-gradient(180deg, #FFF6D8 0%, #F3CE5A 50%, #C48E25 100%);
-  --gold-pill: rgba(243, 206, 90, 0.12);
-  --gold-border: rgba(243, 206, 90, 0.3);
+  --gold-300: #F3DA85;
+  --gold-400: #E6CA65;
+  --gold-500: #D4AF37;
+  --gold-600: #B8860B;
+  --gold-gradient: linear-gradient(135deg, #FFF0B8 0%, #D4AF37 50%, #996515 100%);
 
-  /* Accents */
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
   --emerald: #34D399;
-  --emerald-subtle: rgba(52, 211, 153, 0.12);
-  --text-pure: #FFFFFF;
-  --text-body: #94A3B8;
-  --text-muted: #64748B;
+  --rose: #F43F5E;
 
-  /* Geometry & Glass Physics */
-  --radius-xl: 32px;
-  --radius-lg: 24px;
-  --radius-md: 18px;
-  --radius-pill: 9999px;
-  --blur: blur(36px) saturate(190%);
-  --shadow-float: 0 24px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px -10px rgba(243, 206, 90, 0.08);
+  --font-serif: 'Cinzel', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
 
-  /* Transitions */
-  --ease-spring: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --liquid-blur: blur(28px);
 }
 
 *, *::before, *::after {
@@ -53,57 +40,35 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
-  background-color: var(--canvas);
-  color: var(--text-pure);
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  background: radial-gradient(circle at 50% -10%, #151928 0%, #050608 60%);
+  background: radial-gradient(circle at 50% 0%, #151928 0%, #080A0F 65%);
 }
 
-/* Ambient Liquid Specular Lighting */
-.water-caustic-1 {
+/* Subtle ambient liquid lighting (gentle & sophisticated, not garish) */
+.ambient-glow {
   position: fixed;
-  top: -180px;
-  left: 25%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(243, 206, 90, 0.08) 0%, rgba(56, 189, 248, 0.05) 50%, transparent 70%);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 450px;
+  background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.08) 0%, rgba(56, 189, 248, 0.03) 45%, transparent 70%);
   filter: blur(100px);
   pointer-events-none;
   z-index: 0;
-  border-radius: 50%;
-  animation: floatOrb 20s ease-in-out infinite alternate;
-}
-
-.water-caustic-2 {
-  position: fixed;
-  top: 500px;
-  right: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, rgba(139, 92, 246, 0.03) 50%, transparent 70%);
-  filter: blur(110px);
-  pointer-events-none;
-  z-index: 0;
-  border-radius: 50%;
-  animation: floatOrb 26s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes floatOrb {
-  0% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(35px) scale(1.06); }
-  100% { transform: translateY(-25px) scale(0.96); }
 }
 
 .container {
-  max-width: 1160px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -111,45 +76,76 @@ body {
 }
 
 /* ==========================================================================
+   Typography
+   ========================================================================== */
+
+.font-serif-luxury {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+.gold-gradient-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
    Liquid Glass Cards
    ========================================================================== */
 
 .liquid-card {
-  background: var(--surface-glass-card);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-specular), var(--shadow-float);
-  border-radius: var(--radius-lg);
-  transition: var(--ease-spring);
+  background: var(--bg-surface);
+  backdrop-filter: var(--liquid-blur);
+  -webkit-backdrop-filter: var(--liquid-blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.35s var(--ease-spring);
   position: relative;
   overflow: hidden;
 }
 
 .liquid-card:hover {
-  background: var(--surface-glass-hover);
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: var(--border-highlight);
   transform: translateY(-4px);
-  box-shadow: var(--glass-specular), 0 32px 70px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(243, 206, 90, 0.12);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .liquid-card-gold {
-  background: linear-gradient(145deg, rgba(32, 27, 18, 0.7) 0%, rgba(18, 22, 34, 0.7) 100%);
-  border: 1px solid var(--gold-border);
-  box-shadow: var(--glass-specular-gold), var(--shadow-float);
+  border-color: var(--border-gold);
+  background: linear-gradient(145deg, rgba(24, 21, 16, 0.75) 0%, rgba(14, 18, 28, 0.78) 100%);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(243, 218, 133, 0.25);
 }
 
-.liquid-card-gold:hover {
-  border-color: rgba(243, 206, 90, 0.55);
+.liquid-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s var(--ease-spring);
+}
+
+.liquid-pill-gold {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.35);
+  color: var(--gold-400);
 }
 
 /* ==========================================================================
-   Floating Navigation (macOS / visionOS Capsule)
+   Navigation Capsule (Apple Floating Island)
    ========================================================================== */
 
 .nav-wrapper {
   position: sticky;
-  top: 20px;
+  top: 18px;
   z-index: 100;
   display: flex;
   justify-content: center;
@@ -161,43 +157,40 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1040px;
+  max-width: 1100px;
   padding: 10px 22px;
-  background: rgba(12, 15, 24, 0.72);
-  backdrop-filter: blur(40px) saturate(200%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), 0 20px 45px -10px rgba(0, 0, 0, 0.65);
-  border-radius: var(--radius-pill);
+  background: rgba(12, 16, 24, 0.8);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid var(--border-highlight);
+  border-radius: 9999px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   color: #FFF;
 }
 
-.water-drop-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #FFF0B8 0%, #EAB308 60%, #996515 100%);
+.brand-emblem {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFF1BE 0%, #D4AF37 50%, #996515 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8), 0 4px 14px rgba(234, 179, 8, 0.4);
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
 }
 
-.brand-name {
-  font-family: 'Outfit', sans-serif;
+.brand-text {
+  font-family: var(--font-serif);
   font-size: 19px;
   font-weight: 700;
-  letter-spacing: -0.025em;
-  background: var(--gold-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.04em;
 }
 
 .nav-links {
@@ -211,9 +204,8 @@ body {
   text-decoration: none;
   font-size: 13.5px;
   font-weight: 500;
-  color: var(--text-body);
-  transition: var(--ease-spring);
-  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+  transition: color 0.25s ease;
 }
 
 .nav-links a:hover {
@@ -223,37 +215,12 @@ body {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* ==========================================================================
-   Liquid Pills & Buttons
+   Buttons (Bespoke Liquid Luxury)
    ========================================================================== */
-
-.liquid-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
-  color: var(--text-pure);
-  font-size: 12.5px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  transition: var(--ease-spring);
-  text-decoration: none;
-}
-
-.liquid-pill-gold {
-  background: var(--gold-pill);
-  border-color: var(--gold-border);
-  color: var(--gold-glow);
-  box-shadow: inset 0 1px 1px 0 rgba(243, 206, 90, 0.4);
-}
 
 .btn {
   display: inline-flex;
@@ -261,15 +228,15 @@ body {
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: var(--radius-pill);
+  border-radius: 9999px;
   font-size: 13.5px;
   font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
   cursor: pointer;
   border: none;
   outline: none;
-  transition: var(--ease-spring);
-  letter-spacing: -0.01em;
+  transition: all 0.3s var(--ease-spring);
 }
 
 .btn:active {
@@ -277,27 +244,26 @@ body {
 }
 
 .btn-liquid-gold {
-  background: linear-gradient(180deg, #FFF1BC 0%, #F3CE5A 45%, #D49D26 100%);
-  color: #06080D;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8), 0 10px 24px rgba(234, 179, 8, 0.35);
+  background: linear-gradient(135deg, #F5DC8C 0%, #D4AF37 50%, #B8860B 100%);
+  color: #080A0F;
+  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.35);
 }
 
 .btn-liquid-gold:hover {
-  filter: brightness(1.08);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 14px 32px rgba(234, 179, 8, 0.45);
+  filter: brightness(1.1);
+  box-shadow: 0 14px 32px rgba(212, 175, 55, 0.5);
 }
 
 .btn-liquid-glass {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
-  color: var(--text-pure);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-highlight);
+  color: var(--text-primary);
 }
 
 .btn-liquid-glass:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* ==========================================================================
@@ -305,35 +271,25 @@ body {
    ========================================================================== */
 
 .hero-section {
-  padding: 85px 0 45px;
+  padding: 75px 0 50px;
   text-align: center;
 }
 
 .hero-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 64px;
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-  margin: 18px 0;
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-gold-text {
-  background: var(--gold-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: var(--font-serif);
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 22px 0 18px;
 }
 
 .hero-subtitle {
-  font-size: 17.5px;
-  line-height: 1.55;
-  color: var(--text-body);
-  max-width: 580px;
-  margin: 0 auto 34px;
-  letter-spacing: -0.015em;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto 36px;
   font-weight: 400;
 }
 
@@ -341,207 +297,145 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 /* ==========================================================================
-   Rates Stream Capsule
+   Live Rates Matrix (Apple Watch / Bloomberg Grade Cleanliness)
    ========================================================================== */
 
-.rates-stream-capsule {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 12px 28px;
-  border-radius: var(--radius-pill);
-  background: rgba(18, 22, 34, 0.65);
-  backdrop-filter: blur(28px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-specular);
-  margin: 40px auto 0;
-  max-width: 900px;
-}
-
-.rate-item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 13px;
-}
-
-.rate-karat {
-  font-weight: 700;
-  color: var(--gold-glow);
-}
-
-.rate-val {
-  font-family: 'Plus Jakarta Sans', monospace;
-  font-variant-numeric: tabular-nums;
-  font-weight: 600;
-  color: #FFF;
-}
-
-.rate-badge {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--emerald);
-  padding: 2px 7px;
-  border-radius: 6px;
-  background: var(--emerald-subtle);
-}
-
-/* ==========================================================================
-   Live 24K, 22K, 18K Luxury Grid
-   ========================================================================== */
-
-.rates-grid {
+.rate-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
+  margin-top: 20px;
 }
 
-.rate-pod {
+.rate-card {
   padding: 34px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 290px;
 }
 
-.rate-pod-header {
+.rate-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 24px;
 }
 
-.rate-pod-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  color: #FFF;
-  letter-spacing: -0.025em;
-  margin-top: 8px;
-}
-
-.rate-pod-sub {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-.rate-pod-price-box {
-  margin-bottom: 26px;
-}
-
-.rate-pod-label-small {
+.rate-badge-purity {
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   font-weight: 700;
-  color: var(--text-muted);
-  margin-bottom: 4px;
 }
 
-.rate-pod-big-price {
-  font-family: 'Outfit', sans-serif;
-  font-size: 42px;
+.rate-badge-delta {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--emerald);
+  background: rgba(52, 211, 153, 0.12);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rate-large-price {
+  font-size: 44px;
   font-weight: 800;
-  letter-spacing: -0.035em;
-  color: #FFF;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.05;
+  font-family: var(--font-sans);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 6px 0 12px;
 }
 
-.rate-pod-gold-text {
-  background: var(--gold-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.rate-pod-per-gram {
-  font-size: 13.5px;
-  color: var(--text-body);
-  margin-top: 8px;
+.rate-sub-text {
+  font-size: 14px;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 /* ==========================================================================
-   Valuation & Investment Console
+   Valuation Studio (Interactive Sliders & Chips)
    ========================================================================== */
 
 .console-section {
   padding: 40px 0 80px;
 }
 
-.console-tabs-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 28px;
-}
-
 .console-tabs {
   display: flex;
-  padding: 5px;
-  border-radius: var(--radius-pill);
-  background: rgba(14, 18, 28, 0.85);
-  backdrop-filter: blur(30px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-specular);
+  padding: 6px;
+  border-radius: 9999px;
+  background: rgba(12, 16, 24, 0.85);
+  border: 1px solid var(--border-subtle);
+  width: fit-content;
+  margin: 0 auto 32px;
   gap: 4px;
 }
 
 .console-tab-btn {
-  padding: 9px 22px;
-  border-radius: var(--radius-pill);
+  padding: 10px 24px;
+  border-radius: 9999px;
   background: transparent;
   border: none;
-  color: var(--text-body);
-  font-size: 13px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--ease-spring);
-  letter-spacing: -0.01em;
+  transition: all 0.25s ease;
 }
 
 .console-tab-btn.active {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   color: #FFF;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
-/* Fluid Sliders */
-.slider-group {
-  margin-bottom: 24px;
-}
-
-.slider-label-row {
+.weight-chips-row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 13px;
-  color: var(--text-body);
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
 }
 
-.slider-value-display {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--gold-glow);
-  font-variant-numeric: tabular-nums;
+.chip-btn {
+  padding: 6px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFF;
+}
+
+.chip-btn.active {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--gold-400);
 }
 
 .fluid-slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 7px;
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
   outline: none;
   cursor: pointer;
 }
@@ -553,92 +447,29 @@ body {
   height: 22px;
   border-radius: 50%;
   background: #FFF;
-  border: 3px solid var(--gold-glow);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 4px 14px rgba(243, 206, 90, 0.45);
+  border: 3px solid var(--gold-500);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
   cursor: pointer;
   transition: transform 0.15s ease;
 }
 
 .fluid-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.16);
-}
-
-/* Breakdown Display Box */
-.valuation-display-box {
-  padding: 28px;
-  border-radius: var(--radius-lg);
-  background: rgba(8, 11, 18, 0.55);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.val-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13.5px;
-  color: var(--text-body);
-}
-
-.val-row strong {
-  color: #FFF;
-  font-variant-numeric: tabular-nums;
-}
-
-.val-total-row {
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.val-total-amount {
-  font-family: 'Outfit', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--gold-glow);
-  font-variant-numeric: tabular-nums;
+  transform: scale(1.15);
 }
 
 /* ==========================================================================
-   Haute Joaillerie Showcase
+   Curated Haute Joaillerie Grid
    ========================================================================== */
-
-.section-header {
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-.section-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 40px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-top: 10px;
-}
-
-.section-subtitle {
-  font-size: 15.5px;
-  color: var(--text-body);
-  max-width: 560px;
-  margin: 10px auto 0;
-  line-height: 1.5;
-}
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
-  margin-bottom: 70px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+  margin-bottom: 60px;
 }
 
 .product-card {
-  padding: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -647,7 +478,7 @@ body {
 .product-image-box {
   position: relative;
   aspect-ratio: 1 / 1;
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   overflow: hidden;
   background: #000;
   margin-bottom: 18px;
@@ -657,7 +488,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s var(--ease-spring);
 }
 
 .product-card:hover .product-image-box img {
@@ -666,48 +497,17 @@ body {
 
 .product-tag {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 14px;
+  left: 14px;
   padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  background: rgba(10, 13, 20, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  background: rgba(10, 13, 20, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
   font-size: 11px;
   font-weight: 700;
-  color: var(--gold-glow);
-}
-
-.product-meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 6px;
-}
-
-.product-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #FFF;
-  margin-bottom: 6px;
-}
-
-.product-desc {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  line-height: 1.45;
-  margin-bottom: 16px;
-}
-
-.product-action-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.05em;
+  color: var(--gold-400);
 }
 
 /* ==========================================================================
@@ -717,8 +517,8 @@ body {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(4, 5, 8, 0.82);
-  backdrop-filter: blur(28px);
+  background: rgba(4, 6, 10, 0.85);
+  backdrop-filter: blur(24px);
   z-index: 200;
   display: flex;
   align-items: center;
@@ -737,7 +537,7 @@ body {
 .modal-container {
   width: 100%;
   max-width: 580px;
-  max-height: 88vh;
+  max-height: 90vh;
   overflow-y: auto;
   padding: 34px;
 }
@@ -748,66 +548,52 @@ body {
   justify-content: space-between;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .modal-close-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
   color: #FFF;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: var(--ease-spring);
+  transition: all 0.2s ease;
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.15);
 }
 
-/* Toast */
 .toast-capsule {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 300;
-  padding: 12px 20px;
-  border-radius: var(--radius-pill);
+  padding: 14px 22px;
+  border-radius: 9999px;
   background: rgba(14, 18, 28, 0.95);
-  backdrop-filter: blur(28px);
-  border: 1px solid rgba(243, 206, 90, 0.4);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 20px 40px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
   color: #FFF;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 500;
   display: flex;
   align-items: center;
   gap: 10px;
-  transform: translateY(80px);
+  transform: translateY(100px);
   opacity: 0;
-  transition: var(--ease-spring);
+  transition: all 0.35s var(--ease-spring);
 }
 
 .toast-capsule.show {
   transform: translateY(0);
   opacity: 1;
-}
-
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
-
-@media (max-width: 1024px) {
-  .rates-grid {
-    grid-template-columns: 1fr;
-  }
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
@@ -817,7 +603,7 @@ body {
   .nav-links {
     display: none;
   }
-  .products-grid {
+  .rate-cards-grid {
     grid-template-columns: 1fr;
   }
 }
